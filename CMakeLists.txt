@@ -11,6 +11,11 @@ find_package(Boost REQUIRED
 )
 
 find_package(PkgConfig REQUIRED)
+find_package(OpenCV REQUIRED)
+if (OpenCV_VERSION VERSION_EQUAL "3")
+ add_definitions("-DOPENCV3=1")
+endif()
+ MESSAGE(STATUS "using Opencv version " ${OpenCV_VERSION})
 
 find_package(ASSIMP QUIET)
 if (NOT ASSIMP_FOUND)
